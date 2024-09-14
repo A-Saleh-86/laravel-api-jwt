@@ -20,36 +20,36 @@ User Authentication and Product Management API
 -- swagger
 
 *** User Management:
--- name
--- email
--- password
--- role => Must Be Super Admin - User ONLY.
--- address
+** name
+** email
+** password
+** role => Must Be Super Admin - User ONLY.
+** address
 
-**Endpoints:
---Register a new user: POST api/register
---Login: POST api/login
---Reset password: POST api/reset-password
---Get all users: GET api/users
---Get user details: POST api/user/{id}
---Update user details: PUT api/user/{id}
---Delete a user: DELETE api/user/{id}
+*** Endpoints:
+** Register a new user: POST api/register
+** Login: POST api/login
+** Reset password: POST api/reset-password
+** Get all users: GET api/users
+** Get user details: POST api/user/{id}
+** Update user details: PUT api/user/{id}
+** Delete a user: DELETE api/user/{id}
 
 
 
 *** Products Management:
--- name
--- description
--- prices
--- currency
--- stock_quantity
+** name
+** description
+** prices
+** currency
+** stock_quantity
 
-** Endpoints:
---Create a new product: POST api/product
---Get all products: GET api/product
---Get product details by ID: GET api/product/{id}
---Update product details: PUT api/product/{id}
---Delete a product: DELETE api/product/{id}
+*** Endpoints:
+** Create a new product: POST api/product
+** Get all products: GET api/product
+** Get product details by ID: GET api/product/{id}
+** Update product details: PUT api/product/{id}
+** Delete a product: DELETE api/product/{id}
 
 
 *** Testing:
@@ -76,8 +76,8 @@ User Authentication and Product Management API
 --------------------------------------
 ROUTS:
 
-  GET|HEAD  / ................................................................ 
-  GET|HEAD  api/documentation l5-swagger.default.api › L5Swagger\Http › Swagg…
+  GET|HEAD  / ................................................................ /
+  GET|HEAD  api/documentation ........................... Open Swagger
   POST      api/login ................................... AuthController@login
   POST      api/logout ................................. AuthController@logout
   GET|HEAD  api/oauth2-callback l5-swagger.default.oauth2_callback › L5Swagge…
