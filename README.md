@@ -1,102 +1,84 @@
-User Authentication and Product Management API
+# User Authentication and Product Management API
 
-** Sample App For Authenticate Users - Products System.
+**Sample App for Authenticating Users and Managing Products**
 
-*** Technology Stack Chosen:
+### Technology Stack
 
-* Programing Language:
--- PHP 
+- **Programming Language**: PHP
+- **Framework**: Laravel
+- **Auth Package**: JWT
+- **Database**: MySQL
+- **API Documentation**: Swagger
 
-* Framework:
---Laravel
+### User Management
 
-* Auth Package:
--- JWT
+- **User Properties**:
+  - `name`
+  - `email`
+  - `password`
+  - `role` (Must be "super admin" or "user")
+  - `address`
 
-* Database: 
--- mysql 
+- **Endpoints**:
+  - **Register a New User**: `POST api/register`
+  - **Login**: `POST api/login`
+  - **Reset Password**: `POST api/reset-password`
+  - **Get All Users**: `GET api/users`
+  - **Get User Details**: `GET api/user/{id}`
+  - **Update User Details**: `PUT api/user/{id}`
+  - **Delete a User**: `DELETE api/user/{id}`
 
-* Provide API documentation:
--- swagger
+### Product Management
 
-*** User Management:
-*** name
-*** email
-** password
-** role => Must Be Super Admin - User ONLY.
-** address
+- **Product Properties**:
+  - `name`
+  - `description`
+  - `price`
+  - `currency`
+  - `stock_quantity`
 
-*** Endpoints:
-** Register a new user: POST api/register
-** Login: POST api/login
-** Reset password: POST api/reset-password
-** Get all users: GET api/users
-** Get user details: POST api/user/{id}
-** Update user details: PUT api/user/{id}
-** Delete a user: DELETE api/user/{id}
+- **Endpoints**:
+  - **Create a New Product**: `POST api/product`
+  - **Get All Products**: `GET api/product`
+  - **Get Product Details by ID**: `GET api/product/{id}`
+  - **Update Product Details**: `PUT api/product/{id}`
+  - **Delete a Product**: `DELETE api/product/{id}`
 
+### Testing
 
+- Validate functionality and error handling using Postman or similar tools.
+- Ensure token-based authentication works properly.
 
-*** Products Management:
-** name
-** description
-** prices
-** currency
-** stock_quantity
+### How to Use
 
-*** Endpoints:
-** Create a new product: POST api/product
-** Get all products: GET api/product
-** Get product details by ID: GET api/product/{id}
-** Update product details: PUT api/product/{id}
-** Delete a product: DELETE api/product/{id}
+1. **Using Postman**:
+   - Register a new user.
+   - Log in to obtain a token.
+   - Use the token in subsequent requests.
 
+2. **Using Swagger**:
+   - Run `php artisan serve`.
+   - Visit `[your-localhost-path]/api/documentation`.
+   - Register and log in to obtain a token.
+   - Use the "Authorize" button to paste the token.
+   - Test endpoints using Swagger's interface.
 
-*** Testing:
--- Make a test validation in functions for errors [ status code ]
+### Routes
 
------------------------------------------------------
+- **GET|HEAD** `/` ........................................................... /
+- **GET|HEAD** `api/documentation` ......................... Open Swagger
+- **POST** `api/login` ........................................ AuthController@login
+- **POST** `api/logout` ...................................... AuthController@logout
+- **POST** `api/password/reset` ........................ AuthController@resetPassword
+- **POST** `api/product` ........................................... ProductController@store
+- **GET|HEAD** `api/product/{id}` ...................... ProductController@show
+- **PUT** `api/product/{id}` ............................... ProductController@update
+- **DELETE** `api/product/{id}` .......................... ProductController@destroy
+- **GET|HEAD** `api/products` ................................ ProductController@index
+- **POST** `api/register` .................................... AuthController@register
+- **GET|HEAD** `api/user/{id}` ................................. UserController@show
+- **PUT** `api/user/{id}` .................................... UserController@update
+- **DELETE** `api/user/{id}` ............................... UserController@destroy
+- **GET|HEAD** `api/users` .................................... UserController@index
 
-*** How to Use:
-
-- You can test it using postman or any other tool.
--- register new user.
--- login to get token.
--- use token in other Routes.
-
-
-- using swagger
--- php artisan serve.
--- [your-localhost-path]/api/documentation
--- use register method.
--- login to get token.
--- use Authorize Button to paste token.
--- enjoy using all methods
-
---------------------------------------
-ROUTS:
-
-  GET|HEAD  / ................................................................ /
-  GET|HEAD  api/documentation ........................... Open Swagger
-  POST      api/login ................................... AuthController@login
-  POST      api/logout ................................. AuthController@logout
-  GET|HEAD  api/oauth2-callback l5-swagger.default.oauth2_callback › L5Swagge…
-  POST      api/password/reset .................. AuthController@resetPassword
-  POST      api/product .............................. ProductController@store
-  GET|HEAD  api/product/{id} .......................... ProductController@show
-  PUT       api/product/{id} ........................ ProductController@update
-  DELETE    api/product/{id} ....................... ProductController@destroy
-  GET|HEAD  api/products ............................. ProductController@index
-  POST      api/register ............................. AuthController@register
-  GET|HEAD  api/user/{id} ................................ UserController@show
-  PUT       api/user/{id} .............................. UserController@update
-  DELETE    api/user/{id} ............................. UserController@destroy
-  GET|HEAD  api/users ................................... UserController@index
-  GET|HEAD  docs/asset/{asset} l5-swagger.default.asset › L5Swagger\Http › Sw…
-  GET|HEAD  docs/{jsonFile?} l5-swagger.default.docs › L5Swagger\Http › Swagg…
-  GET|HEAD  sanctum/csrf-cookie sanctum.csrf-cookie › Laravel\Sanctum › CsrfC…
-  GET|HEAD  storage/{path} ..................................... storage.local
-  GET|HEAD  up ............................................................... 
-
-
-[IMPORTANT] => login to get token from response to can use all methodes
+**[IMPORTANT]**: Log in to obtain a token and use it for accessing protected methods.
