@@ -20,8 +20,8 @@ User Authentication and Product Management API
 -- swagger
 
 *** User Management:
-** name
-** email
+*** name
+*** email
 ** password
 ** role => Must Be Super Admin - User ONLY.
 ** address
